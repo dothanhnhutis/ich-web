@@ -25,6 +25,9 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import Image from "next/image";
+import ToggleThemeIcon from "@/components/svg/toggle-theme";
+import { useTheme } from "next-themes";
 
 export function NavUser({
   user,
@@ -36,6 +39,7 @@ export function NavUser({
   };
 }) {
   const { isMobile } = useSidebar();
+  const { setTheme, theme } = useTheme();
 
   return (
     <SidebarMenu>
@@ -89,12 +93,16 @@ export function NavUser({
                 Account
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <CreditCard />
-                Billing
-              </DropdownMenuItem>
-              <DropdownMenuItem>
                 <Bell />
                 Notifications
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() =>
+                  setTheme((prev) => (prev == "light" ? "dark" : "light"))
+                }
+              >
+                <ToggleThemeIcon className="size-4.5 text-foreground " />
+                Chuyển đổi chủ đề
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />

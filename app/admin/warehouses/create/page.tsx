@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 const CreateWarehousePage = () => {
   return (
     <>
-      <header className="sticky top-0 right-0 bg-background/10 backdrop-blur-lg flex h-16 shrink-0 items-center gap-2 border-b px-4">
+      <header className="sticky top-0 right-0 z-50 bg-background/10 backdrop-blur-lg flex h-16 shrink-0 items-center gap-2 border-b px-4">
         <SidebarTrigger className="-ml-1" />
         <Separator
           orientation="vertical"

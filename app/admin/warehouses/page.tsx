@@ -12,6 +12,11 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 
+import WarehouseTable from "./table-data";
+import { Button, buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+
 export const metadata: Metadata = {
   title: "Kho Hàng",
   robots: {
@@ -23,7 +28,7 @@ export const metadata: Metadata = {
 const WarehousePage = () => {
   return (
     <>
-      <header className="sticky top-0 right-0 flex h-16 shrink-0 items-center gap-2 border-b px-4">
+      <header className="sticky top-0 right-0 z-50 bg-background/10 backdrop-blur-lg flex h-16 shrink-0 items-center gap-2 border-b px-4">
         <SidebarTrigger className="-ml-1" />
         <Separator
           orientation="vertical"
@@ -48,7 +53,17 @@ const WarehousePage = () => {
         </Breadcrumb>
       </header>
       <div className="flex flex-1 flex-col gap-4 p-4 mx-auto max-w-5xl">
-        <h3 className="text-2xl font-bold">Quản Lý Kho Hàng </h3>
+        <div className="flex items-center gap-2 justify-between">
+          <h3 className="text-2xl font-bold shrink-0">Quản Lý Kho Hàng </h3>
+          <Link
+            href="/admin/warehouses/create"
+            className={cn(buttonVariants({ variant: "default" }))}
+          >
+            Tạo kho hàng mới
+          </Link>
+        </div>
+
+        <WarehouseTable />
       </div>
     </>
   );

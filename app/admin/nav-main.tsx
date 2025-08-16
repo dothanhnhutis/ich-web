@@ -108,6 +108,20 @@ export function NavMain({
                 </SidebarMenuSubItem>
                 <SidebarMenuSubItem>
                   <SidebarMenuSubButton asChild>
+                    <Link href={"/admin/packagings"}>
+                      <span>Nguyên Liệu</span>
+                    </Link>
+                  </SidebarMenuSubButton>
+                </SidebarMenuSubItem>
+                <SidebarMenuSubItem>
+                  <SidebarMenuSubButton asChild>
+                    <Link href={"/admin/packagings"}>
+                      <span>Thành Phẩm</span>
+                    </Link>
+                  </SidebarMenuSubButton>
+                </SidebarMenuSubItem>
+                <SidebarMenuSubItem>
+                  <SidebarMenuSubButton asChild>
                     <Link href={"/admin/notes"}>
                       <span>Phiếu</span>
                     </Link>
