@@ -48,10 +48,18 @@ import {
   PaginationItem,
 } from "@/components/ui/pagination";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const frameworks = ["10", "20", "30", "40", "50", "All"];
 
-const WarehouseTable = () => {
+const PackagingTable = () => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState<string>("10");
   return (
@@ -61,19 +69,65 @@ const WarehouseTable = () => {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="">Tên Kho Hàng</TableHead>
-                <TableHead>Địa chỉ</TableHead>
-                <TableHead className="text-center w-[130px]">Bao Bì</TableHead>
+                <TableHead className="w-[100px]"></TableHead>
+                <TableHead>Tên Bao Bì</TableHead>
+                <TableHead className="text-center w-[130px]">
+                  Số lượng
+                </TableHead>
                 <TableHead className="text-right w-[130px]"></TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell className="font-medium">Kho hàng 1</TableCell>
                 <TableCell>
-                  Số 159 Nguyễn Đình Chiểu, Khóm 3, Phường Phú Lợi, TP Cần Thơ
+                  {/* <Image
+                    alt="product1"
+                    src="/products/product-2.jpg"
+                    width={48}
+                    height={48}
+                    priority
+                    className="w-auto h-auto object-cover aspect-square object-center"
+                  /> */}
+                  <div className="relative w-[48px] h-[48px]">
+                    <Image
+                      alt="product1"
+                      src="/products/product-1.jpg"
+                      quality={100}
+                      fill
+                      sizes="100vw"
+                      className="object-cover aspect-square"
+                    />
+                  </div>
                 </TableCell>
-                <TableCell className="text-center">100</TableCell>
+                <TableCell className="font-medium">Hộp Body One Top</TableCell>
+
+                <TableCell className="text-center">
+                  <HoverCard openDelay={300}>
+                    <HoverCardTrigger>100</HoverCardTrigger>
+                    <HoverCardContent
+                      className="w-80"
+                      align="center"
+                      side="right"
+                    >
+                      <div className="flex justify-between gap-4">
+                        <Avatar>
+                          <AvatarImage src="https://github.com/vercel.png" />
+                          <AvatarFallback>VC</AvatarFallback>
+                        </Avatar>
+                        <div className="space-y-1">
+                          <h4 className="text-sm font-semibold">@nextjs</h4>
+                          <p className="text-sm">
+                            The React Framework – created and maintained by
+                            @vercel.
+                          </p>
+                          <div className="text-muted-foreground text-xs">
+                            Joined December 2021
+                          </div>
+                        </div>
+                      </div>
+                    </HoverCardContent>
+                  </HoverCard>
+                </TableCell>
                 <TableCell className="text-right">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
@@ -96,12 +150,49 @@ const WarehouseTable = () => {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">Kho hàng 2</TableCell>
                 <TableCell>
-                  Số 102 Nguyễn Đình Chiểu, Khóm 3, Phường Phú Lợi, TP Cần Thơ
+                  {/* <Image
+                    alt="product1"
+                    src="/products/product-2.jpg"
+                    width={48}
+                    height={48}
+                    priority
+                    className="w-auto h-auto object-cover aspect-square object-center"
+                  /> */}
+                  <div className="relative w-[48px] h-[48px]">
+                    <Image
+                      alt="product2"
+                      src="/products/product-2.jpg"
+                      quality={100}
+                      fill
+                      sizes="100vw"
+                      className="object-cover aspect-square"
+                    />
+                  </div>
                 </TableCell>
+                <TableCell className="font-medium">Hộp Body One Top</TableCell>
+
                 <TableCell className="text-center">100</TableCell>
-                <TableCell className="text-right"></TableCell>
+                <TableCell className="text-right">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost">
+                        <EllipsisVerticalIcon className="w-4 h-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-30" align="start">
+                      <DropdownMenuLabel>Hành động</DropdownMenuLabel>
+                      <DropdownMenuGroup>
+                        <DropdownMenuItem>Sao chép ID</DropdownMenuItem>
+                        <DropdownMenuItem>Chỉnh sửa</DropdownMenuItem>
+                      </DropdownMenuGroup>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem variant="destructive">
+                        Xoá
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -215,4 +306,4 @@ const WarehouseTable = () => {
   );
 };
 
-export default WarehouseTable;
+export default PackagingTable;

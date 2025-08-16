@@ -52,18 +52,20 @@ const WarehousePage = () => {
           </BreadcrumbList>
         </Breadcrumb>
       </header>
-      <div className="flex flex-1 flex-col gap-4 p-4 mx-auto max-w-5xl">
-        <div className="flex items-center gap-2 justify-between">
-          <h3 className="text-2xl font-bold shrink-0">Quản Lý Kho Hàng </h3>
-          <Link
-            href="/admin/warehouses/create"
-            className={cn(buttonVariants({ variant: "default" }))}
-          >
-            Tạo kho hàng mới
-          </Link>
-        </div>
+      <div className="w-full overflow-hidden">
+        <div className="flex flex-col gap-4 p-4 mx-auto max-w-5xl ">
+          <div className="flex items-center gap-2 justify-between">
+            <h3 className="text-2xl font-bold shrink-0">Quản Lý Kho Hàng </h3>
+            <Link
+              href="/admin/warehouses/create"
+              className={cn(buttonVariants({ variant: "default" }))}
+            >
+              Tạo kho hàng mới
+            </Link>
+          </div>
 
-        <WarehouseTable />
+          <WarehouseTable />
+        </div>
       </div>
     </>
   );

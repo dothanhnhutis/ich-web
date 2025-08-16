@@ -11,6 +11,10 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
+import PackagingTable from "./table-data";
 export const metadata: Metadata = {
   title: "Quản Lý Bao Bì",
   robots: {
@@ -21,7 +25,7 @@ export const metadata: Metadata = {
 const PackagingsPage = () => {
   return (
     <>
-      <header className="sticky top-0 right-0 flex h-16 shrink-0 items-center gap-2 border-b px-4">
+      <header className="sticky top-0 right-0 z-50 bg-background/10 backdrop-blur-lg flex h-16 shrink-0 items-center gap-2 border-b px-4">
         <SidebarTrigger className="-ml-1" />
         <Separator
           orientation="vertical"
@@ -45,7 +49,20 @@ const PackagingsPage = () => {
           </BreadcrumbList>
         </Breadcrumb>
       </header>
-      <div className="flex flex-1 flex-col gap-4 p-4"></div>
+      <div className="w-full overflow-hidden">
+        <div className="flex flex-col gap-4 p-4 mx-auto max-w-5xl ">
+          <div className="flex items-center gap-2 justify-between">
+            <h3 className="text-2xl font-bold shrink-0">Quản Lý Bao Bì </h3>
+            <Link
+              href="/admin/packagings/create"
+              className={cn(buttonVariants({ variant: "default" }))}
+            >
+              Tạo bao bì mới
+            </Link>
+          </div>
+          <PackagingTable />
+        </div>
+      </div>
     </>
   );
 };

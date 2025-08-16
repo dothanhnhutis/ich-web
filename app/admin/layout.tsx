@@ -17,7 +17,7 @@ const AdminLayout = ({
     >
       <SidebarProvider>
         <AdminSidebar />
-        <SidebarInset className="block overflow-x-hidden">
+        <SidebarInset className="block w-[calc(100%_-_var(--sidebar-width))]">
           {children}
         </SidebarInset>
       </SidebarProvider>
