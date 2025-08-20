@@ -58,7 +58,6 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Separator } from "@/components/ui/separator";
 
 const frameworks = ["10", "20", "30", "40", "50", "All"];
@@ -66,6 +65,7 @@ const frameworks = ["10", "20", "30", "40", "50", "All"];
 const PackagingTable = () => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState<string>("10");
+
   return (
     <div className="outline-none relative flex flex-col gap-4 overflow-auto @container">
       <div className="overflow-hidden rounded-lg border">
@@ -242,99 +242,166 @@ const PackagingTable = () => {
           </Table>
         </div>
       </div>
-
-      <div className="grid">
-        <div className="grid grid-cols-[70px_minmax(400px,_1fr)_130px_130px] h-10 border-b hover:bg-muted/50">
-          <div className="flex flex-1 items-center col-start-2 col-span-1 px-2 h-10 text-sm text-foreground font-medium whitespace-nowrap">
-            <p className="align-middle">Tên Bao Bì</p>
-          </div>
-          <div className="flex items-center justify-center col-span-2 w-[130px] px-2 h-10 text-sm text-foreground font-medium whitespace-nowrap align-middle">
-            <p>Số Lượng</p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-[70px_minmax(400px,_1fr)_130px_130px] border-b hover:bg-muted/50">
-          <div className="p-2">
-            <div className="relative w-[48px] h-[48px]">
-              <Image
-                alt="product1"
-                src="/products/product-1.jpg"
-                quality={100}
-                fill
-                sizes="100vw"
-                className="object-cover aspect-square"
-              />
+      <div className="overflow-hidden">
+        <div className="grid relative w-full overflow-x-auto pb-1">
+          <div className="grid grid-cols-[70px_minmax(400px,_1fr)_130px_130px] h-10 border-b hover:bg-muted/50">
+            <div className="flex flex-1 items-center col-start-2 col-span-1 px-2 h-10 text-sm text-foreground font-medium whitespace-nowrap">
+              <p className="align-middle">Tên Bao Bì</p>
+            </div>
+            <div className="flex items-center justify-center col-span-2 w-[130px] px-2 h-10 text-sm text-foreground font-medium whitespace-nowrap align-middle">
+              <p>Số Lượng</p>
             </div>
           </div>
-          <div className="text-center text-sm p-2 flex items-center font-bold">
-            Hộp Body One Top
-          </div>
-          <div className="text-center text-sm p-2 flex items-center justify-center">
-            100
-          </div>
-          <div className="text-end p-2 flex items-center justify-end">
-            <Button variant="ghost">
-              <ChevronUpIcon className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
 
-        <div className="grid grid-cols-[70px_minmax(400px,_1fr)_130px_130px] border-b hover:bg-muted/50">
-          <div className="p-2">
-            <div className="relative w-[48px] h-[48px]">
-              <Image
-                alt="product1"
-                src="/products/product-1.jpg"
-                quality={100}
-                fill
-                sizes="100vw"
-                className="object-cover aspect-square"
-              />
+          <div className="grid grid-cols-[70px_minmax(400px,_1fr)_130px_130px] border-b hover:bg-muted/50">
+            <div className="p-2">
+              <div className="relative w-[48px] h-[48px]">
+                <Image
+                  alt="product1"
+                  src="/products/product-1.jpg"
+                  quality={100}
+                  fill
+                  sizes="100vw"
+                  className="object-cover aspect-square"
+                />
+              </div>
+            </div>
+            <div className="text-center text-sm p-2 flex items-center font-bold">
+              Hộp Body One Top
+            </div>
+            <div className="text-center text-sm p-2 flex items-center justify-center">
+              100
+            </div>
+            <div className="text-end p-2 flex items-center justify-end">
+              <Button variant="ghost">
+                <ChevronUpIcon className="w-4 h-4" />
+              </Button>
             </div>
           </div>
-          <div className="text-center text-sm p-2 flex items-center font-bold">
-            Hộp Body One Top
-          </div>
-          <div className="text-center text-sm p-2 flex items-center justify-center">
-            100
-          </div>
-          <div className="text-end p-2 flex items-center justify-end">
-            <Button variant="ghost">
-              <ChevronUpIcon className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
 
-        <div className="grid grid-cols-[70px_minmax(400px,_1fr)_130px_130px] border hover:bg-muted/50">
-          <div className="p-2">
-            <div className="relative w-[48px] h-[48px]">
-              <Image
-                alt="product1"
-                src="/products/product-1.jpg"
-                quality={100}
-                fill
-                sizes="100vw"
-                className="object-cover aspect-square"
-              />
+          <div className="grid grid-cols-[70px_minmax(400px,_1fr)_130px_130px] border-b hover:bg-muted/50">
+            <div className="p-2">
+              <div className="relative w-[48px] h-[48px]">
+                <Image
+                  alt="product1"
+                  src="/products/product-1.jpg"
+                  quality={100}
+                  fill
+                  sizes="100vw"
+                  className="object-cover aspect-square"
+                />
+              </div>
+            </div>
+            <div className="text-center text-sm p-2 flex items-center font-bold">
+              Hộp Body One Top
+            </div>
+            <div className="text-center text-sm p-2 flex items-center justify-center">
+              100
+            </div>
+            <div className="text-end p-2 flex items-center justify-end">
+              <Button variant="ghost">
+                <ChevronUpIcon className="w-4 h-4" />
+              </Button>
             </div>
           </div>
-          <div className="text-center text-sm p-2 flex items-center font-bold">
-            Hộp Body One Top
-          </div>
-          <div className="text-center text-sm p-2 flex items-center justify-center">
-            100
-          </div>
-          <div className="text-end p-2 flex items-center justify-end">
-            <Button variant="ghost">
-              <ChevronDownIcon className="w-4 h-4" />
-            </Button>
-          </div>
-          {/* <Separator className="col-span-full w-11/12" /> */}
 
-          <div className="col-span-full px-2 pb-2 w-full">
-            <Separator />
-            <p className="pt-2 font-medium text-sm">Thông tin kho hàng:</p>
-            <div></div>
+          <div className="grid grid-cols-[70px_minmax(400px,_1fr)_130px_130px] border-b hover:bg-muted/50 rounded-md border">
+            <div className="p-2">
+              <div className="relative w-[48px] h-[48px] rounded-md overflow-hidden">
+                <Image
+                  alt="product1"
+                  src="/products/product-1.jpg"
+                  quality={100}
+                  fill
+                  sizes="100vw"
+                  className="object-cover aspect-square"
+                />
+              </div>
+            </div>
+            <div className="text-center text-sm p-2 flex items-center font-bold">
+              Hộp Body One Top
+            </div>
+            <div className="text-center text-sm p-2 flex items-center justify-center">
+              100
+            </div>
+            <div className="text-end p-2 flex items-center justify-end">
+              <Button variant="ghost">
+                <ChevronDownIcon className="w-4 h-4" />
+              </Button>
+            </div>
+
+            <div className="col-span-full px-2 pb-2 w-full">
+              <Separator />
+              <div className="flex pt-2 gap-2">
+                <div className="relative w-[100px] h-[100px] rounded-md overflow-hidden shrink-0">
+                  <Image
+                    alt="product1"
+                    src="/products/product-1.jpg"
+                    quality={100}
+                    fill
+                    sizes="100vw"
+                    className="object-cover aspect-square"
+                  />
+                </div>
+                <div className="flex-1">
+                  <p className="font-medium text-sm">Thông tin kho hàng:</p>
+                  <div className="grid grid-cols-[minmax(300px,_1fr)_130px_122px]">
+                    <div className="flex items-center pl-2">
+                      <p>Kho Hàng A</p>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <p>50</p>
+                    </div>
+                    <div className="flex items-center justify-end">
+                      <Button variant="ghost">
+                        <EllipsisVerticalIcon className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-[minmax(300px,_1fr)_130px_122px]">
+                    <div className="flex items-center pl-2">
+                      <p>Kho Hàng A</p>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <p>50</p>
+                    </div>
+                    <div className="flex items-center justify-end">
+                      <Button variant="ghost">
+                        <EllipsisVerticalIcon className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-[minmax(300px,_1fr)_130px_122px]">
+                    <div className="flex items-center pl-2">
+                      <p>Kho Hàng A</p>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <p>50</p>
+                    </div>
+                    <div className="flex items-center justify-end">
+                      <Button variant="ghost">
+                        <EllipsisVerticalIcon className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-[minmax(300px,_1fr)_130px_122px]">
+                    <div className="flex items-center pl-2">
+                      <p>Kho Hàng A</p>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <p>50</p>
+                    </div>
+                    <div className="flex items-center justify-end">
+                      <Button variant="ghost">
+                        <EllipsisVerticalIcon className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

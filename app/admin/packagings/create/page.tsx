@@ -18,9 +18,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Button, buttonVariants } from "@/components/ui/button";
+import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Tạo Kho Hàng",
+  title: "Tạo Bao Bì Mới",
   robots: {
     index: false,
     follow: false,
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
 const CreatePackagingPage = () => {
   return (
     <>
-      <header className="sticky top-0 right-0 bg-background/10 backdrop-blur-lg flex h-16 shrink-0 items-center gap-2 border-b px-4">
+      <header className="sticky top-0 right-0 z-50 bg-background/10 backdrop-blur-lg flex h-16 shrink-0 items-center gap-2 border-b px-4">
         <SidebarTrigger className="-ml-1" />
         <Separator
           orientation="vertical"
@@ -61,17 +62,30 @@ const CreatePackagingPage = () => {
         <form>
           <div className="grid gap-6">
             <div className="grid gap-3">
+              <Label>Hình ảnh</Label>
+              <div className="relative aspect-square md:max-w-[200px] rounded-md overflow-hidden shrink-0">
+                <Image
+                  alt="product1"
+                  src="/products/product-1.jpg"
+                  quality={100}
+                  fill
+                  sizes="100vw"
+                  className="object-cover aspect-square"
+                />
+              </div>
+            </div>
+            <div className="grid gap-3">
               <Label>Tên Bao Bì</Label>
               <Input />
             </div>
-            <div className="grid gap-3">
+            {/* <div className="grid gap-3">
               <Label>Mô tả kho hàng</Label>
               <Textarea
                 className="min-h-[150px]"
                 maxLength={500}
                 placeholder="Type your message here."
               />
-            </div>
+            </div> */}
             <div className="flex flex-col sm:flex-row justify-end items-center gap-3">
               <Link
                 href="/admin/warehouses"
