@@ -11,22 +11,18 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-
-import WarehouseTable from "./table-data";
-import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { PlusIcon } from "lucide-react";
-
+import { buttonVariants } from "@/components/ui/button";
+import NoteTable from "./table-data";
 export const metadata: Metadata = {
-  title: "Kho Hàng",
+  title: "Quản Lý Bao Bì",
   robots: {
     index: false,
     follow: false,
   },
 };
-
-const WarehousePage = () => {
+const NotesPage = () => {
   return (
     <>
       <header className="sticky top-0 right-0 z-50 bg-background/10 backdrop-blur-lg flex h-16 shrink-0 items-center gap-2 border-b px-4">
@@ -48,7 +44,7 @@ const WarehousePage = () => {
             </BreadcrumbItem>
             <BreadcrumbSeparator className="hidden md:block" />
             <BreadcrumbItem>
-              <BreadcrumbPage>Kho Hàng</BreadcrumbPage>
+              <BreadcrumbPage>Bao Bì</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
@@ -56,21 +52,19 @@ const WarehousePage = () => {
       <div className="w-full overflow-hidden">
         <div className="flex flex-col gap-4 p-4 mx-auto max-w-5xl ">
           <div className="flex items-center gap-2 justify-between">
-            <h3 className="text-2xl font-bold shrink-0">Quản Lý Kho Hàng </h3>
+            <h3 className="text-2xl font-bold shrink-0">Quản Lý Phiếu</h3>
             <Link
-              href="/admin/warehouses/create"
+              href="/admin/packagings/create"
               className={cn(buttonVariants({ variant: "default" }))}
             >
-              <span className="hidden xs:inline">Tạo kho hàng mới</span>
-              <PlusIcon className="w-4 h-4 shrink-0" />
+              Tạo phiếu
             </Link>
           </div>
-
-          <WarehouseTable />
+          <NoteTable />
         </div>
       </div>
     </>
   );
 };
 
-export default WarehousePage;
+export default NotesPage;

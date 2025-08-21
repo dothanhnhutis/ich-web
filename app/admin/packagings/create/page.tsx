@@ -60,10 +60,10 @@ const CreatePackagingPage = () => {
       <div className="flex flex-1 flex-col gap-4 p-4 mx-auto max-w-5xl">
         <h3 className="text-2xl font-bold">Tạo Bao Bì Mới</h3>
         <form>
-          <div className="grid gap-6">
+          <div className="grid gap-6 xs:grid-cols-[200px_1fr]">
             <div className="grid gap-3">
               <Label>Hình ảnh</Label>
-              <div className="relative aspect-square md:max-w-[200px] rounded-md overflow-hidden shrink-0">
+              <div className="relative aspect-square xs:max-w-[200px] rounded-md overflow-hidden shrink-0">
                 <Image
                   alt="product1"
                   src="/products/product-1.jpg"
@@ -75,9 +75,20 @@ const CreatePackagingPage = () => {
               </div>
             </div>
             <div className="grid gap-3">
-              <Label>Tên Bao Bì</Label>
-              <Input />
+              <div className="space-y-3">
+                <Label>Tên Bao Bì</Label>
+                <div>
+                  <Input />
+                  <p className="text-xs text-muted-foreground">
+                    Bao bì sẽ tồn tại ở ở tất cả các kho hàng
+                  </p>
+                </div>
+                <p>
+                  Làm thêm tính năng chọn kho hàng. phải chọn ít nhất 1 kho hàng
+                </p>
+              </div>
             </div>
+
             {/* <div className="grid gap-3">
               <Label>Mô tả kho hàng</Label>
               <Textarea
@@ -86,22 +97,22 @@ const CreatePackagingPage = () => {
                 placeholder="Type your message here."
               />
             </div> */}
-            <div className="flex flex-col sm:flex-row justify-end items-center gap-3">
-              <Link
+            <div className="xs:col-span-2 flex gap-3 flex-col xs:flex-row xs:justify-end">
+              {/* <Link
                 href="/admin/warehouses"
                 className={cn(
                   buttonVariants({
                     variant: "outline",
-                    className: "w-full sm:w-auto cursor-pointer",
+                    className: " cursor-pointer",
                   })
                 )}
               >
                 Huỷ
-              </Link>
-              <Button
-                variant={"default"}
-                className="w-full sm:w-auto cursor-pointer"
-              >
+              </Link> */}
+              <Button variant={"default"} className="flex-1 xs:flex-initial ">
+                Tạo
+              </Button>
+              <Button variant={"default"} className="flex-1 xs:flex-initial">
                 Tạo
               </Button>
             </div>

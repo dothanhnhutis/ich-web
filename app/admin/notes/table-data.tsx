@@ -51,30 +51,35 @@ import { cn } from "@/lib/utils";
 
 const frameworks = ["10", "20", "30", "40", "50", "All"];
 
-const WarehouseTable = () => {
+const NoteTable = () => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState<string>("10");
   return (
     <div className="outline-none relative flex flex-col gap-4 overflow-auto @container">
       <div className="overflow-hidden rounded-lg border">
         <div className="relative w-full overflow-x-auto">
-          <Table>
+          <Table className="table-fixed">
             <TableHeader>
               <TableRow>
-                <TableHead className="">Tên Kho Hàng</TableHead>
-                <TableHead>Địa chỉ</TableHead>
+                <TableHead className="w-[200px]">Ngày Lập Phiếu</TableHead>
+                <TableHead className="text-center w-[130px]">Loại</TableHead>
                 <TableHead className="text-center w-[130px]">Bao Bì</TableHead>
-                <TableHead className="text-right w-[130px]"></TableHead>
+                <TableHead>Ghi chú</TableHead>
+                <TableHead className="text-right w-[50px]"></TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell className="font-medium">Kho hàng 1</TableCell>
-                <TableCell>
+                <TableCell className="w-[200px]">
+                  {new Date().toISOString()}
+                </TableCell>
+                <TableCell className="text-center w-[130px]">Nhập</TableCell>
+
+                <TableCell className="text-center w-[130px]">100</TableCell>
+                <TableCell className="truncate min-w-[400px]">
                   Số 159 Nguyễn Đình Chiểu, Khóm 3, Phường Phú Lợi, TP Cần Thơ
                 </TableCell>
-                <TableCell className="text-center">100</TableCell>
-                <TableCell className="text-right">
+                <TableCell className="text-right w-[50px]">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost">
@@ -85,33 +90,7 @@ const WarehouseTable = () => {
                       <DropdownMenuLabel>Hành động</DropdownMenuLabel>
                       <DropdownMenuGroup>
                         <DropdownMenuItem>Sao chép ID</DropdownMenuItem>
-                        <DropdownMenuItem>Chỉnh sửa</DropdownMenuItem>
-                      </DropdownMenuGroup>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem variant="destructive">
-                        Xoá
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">Kho hàng 2</TableCell>
-                <TableCell>
-                  Số 102 Nguyễn Đình Chiểu, Khóm 3, Phường Phú Lợi, TP Cần Thơ
-                </TableCell>
-                <TableCell className="text-center">100</TableCell>
-                <TableCell className="text-right">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="ghost">
-                        <EllipsisVerticalIcon className="w-4 h-4" />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-30" align="start">
-                      <DropdownMenuLabel>Hành động</DropdownMenuLabel>
-                      <DropdownMenuGroup>
-                        <DropdownMenuItem>Sao chép ID</DropdownMenuItem>
+                        <DropdownMenuItem>Xem nhanh</DropdownMenuItem>
                         <DropdownMenuItem>Chỉnh sửa</DropdownMenuItem>
                       </DropdownMenuGroup>
                       <DropdownMenuSeparator />
@@ -234,4 +213,4 @@ const WarehouseTable = () => {
   );
 };
 
-export default WarehouseTable;
+export default NoteTable;

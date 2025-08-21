@@ -72,6 +72,12 @@ const CreateWarehousePage = () => {
                 placeholder="Type your message here."
               />
             </div>
+            <div className="grid gap-3">
+              <Label>Bao bì</Label>
+              <p>
+                làm tính năng thêm bao bì khi tạo kho. có thể chọn hoặc không
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row justify-end items-center gap-3">
               <Link
                 href="/admin/warehouses"
