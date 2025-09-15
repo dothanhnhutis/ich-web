@@ -1,19 +1,55 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
+import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import PasswordInput from "@/components/password-input";
+import loginAction from "./action";
+import { LoaderCircleIcon } from "lucide-react";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
+  const router = useRouter();
+  const [formData, setFormData] = React.useState<Login>({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = React.useState<string | null>(null);
+  const [isPending, startTransition] = React.useTransition();
+
+  const handleOnchange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (error) {
+      setError(null);
+    }
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    startTransition(async () => {
+      const res = await loginAction(formData);
+      if (res.statusText === "OK") {
+        router.refresh();
+        toast.success(res.data.message);
+      } else {
+        setError(res.data.message);
+      }
+    });
+  };
+
   return (
-    <form className={cn("flex flex-col gap-6", className)} {...props}>
+    <form
+      onSubmit={handleSubmit}
+      className={cn("flex flex-col gap-6", className)}
+      {...props}
+    >
       <div className="flex flex-col items-center gap-2 text-center">
         <h1 className="text-2xl font-bold">Login to your account</h1>
         <p className="text-muted-foreground text-sm text-balance">
@@ -23,7 +59,16 @@ export function LoginForm({
       <div className="grid gap-6">
         <div className="grid gap-3">
           <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="m@example.com" required />
+          <Input
+            id="email"
+            type="email"
+            name="email"
+            placeholder="m@example.com"
+            required
+            onChange={handleOnchange}
+            value={formData.email}
+            disabled={isPending}
+          />
         </div>
         <div className="grid gap-3">
           <div className="flex items-center">
@@ -35,10 +80,24 @@ export function LoginForm({
               Forgot your password?
             </Link>
           </div>
-          <PasswordInput id="password" defaultType="password" required />
+          <PasswordInput
+            id="password"
+            name="password"
+            defaultType="password"
+            autoComplete="off"
+            required
+            onChange={handleOnchange}
+            value={formData.password}
+            disabled={isPending}
+          />
         </div>
-        <Button type="submit" className="w-full cursor-pointer">
-          Login
+        <Button
+          type="submit"
+          className="w-full cursor-pointer"
+          disabled={isPending}
+        >
+          {isPending && <LoaderCircleIcon className="size-4 animate-spin" />}
+          Đăng nhập
         </Button>
         <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
           <span className="bg-background text-muted-foreground relative z-10 px-2">
