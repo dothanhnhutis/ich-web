@@ -33,6 +33,7 @@ export function LoginForm({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormData({ email: "", password: "" });
     startTransition(async () => {
       const res = await loginAction(formData);
       if (res.statusText === "OK") {
@@ -70,7 +71,7 @@ export function LoginForm({
             disabled={isPending}
           />
         </div>
-        <div className="grid gap-3">
+        <div className="grid gap-1">
           <div className="flex items-center">
             <Label htmlFor="password">Password</Label>
             <Link
@@ -84,12 +85,16 @@ export function LoginForm({
             id="password"
             name="password"
             defaultType="password"
+            className="mt-2"
             autoComplete="off"
             required
             onChange={handleOnchange}
             value={formData.password}
             disabled={isPending}
           />
+          {error ? (
+            <p className="text-destructive text-sm font-normal">{error}</p>
+          ) : null}
         </div>
         <Button
           type="submit"
@@ -99,7 +104,7 @@ export function LoginForm({
           {isPending && <LoaderCircleIcon className="size-4 animate-spin" />}
           Đăng nhập
         </Button>
-        <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
+        {/* <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
           <span className="bg-background text-muted-foreground relative z-10 px-2">
             Or continue with
           </span>
@@ -112,14 +117,14 @@ export function LoginForm({
             />
           </svg>
           Login with Google
-        </Button>
+        </Button> */}
       </div>
-      <div className="text-center text-sm">
+      {/* <div className="text-center text-sm">
         Don&apos;t have an account?{" "}
         <a href="#" className="underline underline-offset-4">
           Sign up
         </a>
-      </div>
+      </div> */}
     </form>
   );
 }

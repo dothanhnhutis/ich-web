@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { EyeClosedIcon, EyeIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface PasswordInputProps
   extends Omit<React.ComponentProps<"input">, "type"> {
@@ -28,7 +29,12 @@ const PasswordInput = ({
   const [t, setT] = React.useState<"text" | "password">(type || defaultType);
 
   return (
-    <div className="flex items-center gap-2 h-9 rounded-md pr-1 pl-3 py-1 w-full border border-input shadow-xs group focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50">
+    <div
+      className={cn(
+        "flex items-center gap-2 h-9 rounded-md pr-1 pl-3 py-1 w-full border border-input shadow-xs group focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50",
+        className
+      )}
+    >
       <input
         type={type || t}
         autoComplete="off"

@@ -48,6 +48,7 @@ import {
   PaginationItem,
 } from "@/components/ui/pagination";
 import { cn } from "@/lib/utils";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const frameworks = ["10", "20", "30", "40", "50", "All"];
 
@@ -68,10 +69,60 @@ const UserTable = () => {
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell className="font-medium">
-                  avatar, name, email
+                <TableCell>
+                  <div className="flex items-center gap-2">
+                    <Avatar>
+                      <AvatarImage
+                        src="https://github.com/shadcn.png"
+                        alt="@shadcn"
+                      />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <p className="font-semibold text-base">Thanh Nhựt</p>
+                      <p className="text-sm">m@example.com</p>
+                    </div>
+                  </div>
                 </TableCell>
-                <TableCell>Số lượng vai trò</TableCell>
+                <TableCell>100</TableCell>
+                <TableCell className="text-right">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost">
+                        <EllipsisVerticalIcon className="w-4 h-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-30" align="start">
+                      <DropdownMenuLabel>Hành động</DropdownMenuLabel>
+                      <DropdownMenuGroup>
+                        <DropdownMenuItem>Sao chép ID</DropdownMenuItem>
+                        <DropdownMenuItem>Chỉnh sửa</DropdownMenuItem>
+                      </DropdownMenuGroup>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem variant="destructive">
+                        Xoá
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>
+                  <div className="flex items-center gap-2">
+                    <Avatar>
+                      <AvatarImage
+                        src="https://github.com/shadcn.png"
+                        alt="@shadcn"
+                      />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <p className="font-semibold text-base">Thanh Nhựt</p>
+                      <p className="text-sm">m@example.com</p>
+                    </div>
+                  </div>
+                </TableCell>
+                <TableCell>100</TableCell>
                 <TableCell className="text-right">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
