@@ -1,6 +1,9 @@
 import React from "react";
+import Link from "next/link";
 import { Metadata } from "next";
+import { PlusIcon } from "lucide-react";
 
+import { cn } from "@/lib/utils";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,16 +12,13 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import UserTable from "./table-data";
 import { Separator } from "@/components/ui/separator";
+import { buttonVariants } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 
-import { Button, buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { PlusIcon } from "lucide-react";
-import UserTable from "./table-data";
 export const metadata: Metadata = {
-  title: "Kho Hàng",
+  title: "Quản Lý Người Dùng",
   robots: {
     index: false,
     follow: false,
@@ -56,7 +56,7 @@ const UsersPage = () => {
           <div className="flex items-center gap-2 justify-between">
             <h3 className="text-2xl font-bold shrink-0">Quản người dùng </h3>
             <Link
-              href="/admin/warehouses/create"
+              href="/admin/users/create"
               className={cn(buttonVariants({ variant: "default" }))}
             >
               <span className="hidden xs:inline">Tạo người dùng mới</span>

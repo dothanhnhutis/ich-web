@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 type UserContextProps = {
@@ -11,12 +12,17 @@ export function useUser() {
   if (!context) {
     throw new Error("useUser must be used within a UserContext.");
   }
-
   return context;
 }
 
-export function UserProvider({ children }: { children: React.ReactNode }) {
-  const [user, useUser] = React.useState<UserDetail>(null);
+export function UserProvider({
+  children,
+  user,
+}: {
+  user: UserDetail;
+  children: React.ReactNode;
+}) {
+  const [state, setState] = React.useState<UserDetail>(user);
 
   const contextValue = React.useMemo<UserContextProps>(
     () => ({
@@ -25,5 +31,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     [user]
   );
 
-  return <UserContext.Provider value={null}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>
+  );
 }

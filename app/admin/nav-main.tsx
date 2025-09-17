@@ -24,6 +24,8 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
+import { useUser } from "@/components/user-context";
+import { useRouter } from "next/router";
 
 export function NavMain({
   items,
@@ -36,9 +38,20 @@ export function NavMain({
     items?: {
       title: string;
       url: string;
+      isActive?: boolean;
     }[];
   }[];
 }) {
+  // const router = useRouter();
+  // console.log(router);
+  // const {
+  //   user: { roles },
+  // } = useUser();
+  // const permissions: string[] = Array.from(
+  //   new Set(roles.flatMap((r) => r.permissions))
+  // );
+  // console.log(permissions);
+
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Chức năng chính</SidebarGroupLabel>
@@ -54,7 +67,7 @@ export function NavMain({
         <Collapsible asChild defaultOpen={true} className="group/collapsible">
           <SidebarMenuItem>
             <CollapsibleTrigger asChild>
-              <SidebarMenuButton tooltip={"Người dùng & Quyền"}>
+              <SidebarMenuButton isActive tooltip={"Người dùng & Quyền"}>
                 <ShieldUserIcon />
                 <span>Người Dùng & Vai Trò</span>
                 <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />

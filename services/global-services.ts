@@ -20,10 +20,12 @@ class GlobalServices {
   }
 }
 
-export default new GlobalServices({
+const globalServices = new GlobalServices({
   credentials: "include",
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
   },
 });
+
+export default globalServices;

@@ -30,3 +30,9 @@ type UserDetail = UserWithoutPassword & {
   role_count: number;
   roles: Role[];
 };
+
+type UserDetailAPIRes = {
+  statusCode: number;
+  statusText: string;
+  data: { currentUser: UserDetail };
+};

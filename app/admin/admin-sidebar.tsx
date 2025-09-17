@@ -1,5 +1,4 @@
 "use client";
-
 import * as React from "react";
 import {
   AudioWaveform,
@@ -170,11 +169,11 @@ export function AdminSidebar({
         </Link>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <NavMain items={[]} />
         <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

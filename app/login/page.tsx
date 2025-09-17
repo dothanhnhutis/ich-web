@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
 };
 
-const LoginPage = () => {
+const LoginPage = async () => {
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
       <div className="flex flex-col gap-4 ">

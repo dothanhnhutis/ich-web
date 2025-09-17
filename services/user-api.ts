@@ -11,8 +11,9 @@ export default class UserAPI {
   }
 
   async currentUser() {
-    return await this.userInstance.get<UserDetail>("/me", {
+    return await this.userInstance.get<UserDetailAPIRes>("/me", {
       headers: await getHeaders(),
+      cache: "no-cache",
     });
   }
   async logout() {

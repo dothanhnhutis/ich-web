@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 // import { getCurrentUserAction } from "./libs/actions/UserActions";
 import globalServices from "./services/global-services";
 import { FetchAPIError, FetchAPIResponse } from "./services/api";
+import { currentUser } from "./data/user";
 
 export async function middleware(request: NextRequest) {
   const { nextUrl, url } = request;
@@ -11,8 +12,7 @@ export async function middleware(request: NextRequest) {
   let user: UserDetail | null = null;
   if (sid) {
     try {
-      const res = await globalServices.user.currentUser();
-      user = res.data;
+      user = await currentUser();
     } catch (error: unknown) {
       request.cookies.delete("sid");
     }
