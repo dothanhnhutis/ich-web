@@ -11,10 +11,10 @@ export default class UserAPI {
   }
 
   async currentUser() {
-    return await this.userInstance.get<UserDetailAPIRes>("/me", {
+    const res = await this.userInstance.get<UserDetailAPIRes>("/me", {
       headers: await getHeaders(),
-      cache: "no-cache",
     });
+    return res;
   }
   async logout() {
     await this.userInstance.delete("/logout", {

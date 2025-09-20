@@ -18,6 +18,8 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  console.log(user);
+
   if (user) {
     if (nextUrl.pathname == "/login") {
       return NextResponse.redirect(new URL("/admin", url));
