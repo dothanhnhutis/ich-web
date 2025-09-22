@@ -1,9 +1,6 @@
 import React from "react";
-import Link from "next/link";
 import { Metadata } from "next";
-import { PlusIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -14,7 +11,6 @@ import {
 } from "@/components/ui/breadcrumb";
 import UserTable from "./table-data";
 import { Separator } from "@/components/ui/separator";
-import { buttonVariants } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 
 export const metadata: Metadata = {
@@ -24,7 +20,12 @@ export const metadata: Metadata = {
     follow: false,
   },
 };
-const UsersPage = () => {
+const UsersPage = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) => {
+  const { slug } = await searchParams;
   return (
     <>
       <header className="sticky top-0 right-0 z-50 bg-background/10 backdrop-blur-lg flex h-16 shrink-0 items-center gap-2 border-b px-4">
@@ -51,22 +52,7 @@ const UsersPage = () => {
           </BreadcrumbList>
         </Breadcrumb>
       </header>
-      <div className="w-full overflow-hidden">
-        <div className="flex flex-col gap-4 p-4 mx-auto max-w-5xl">
-          <div className="flex items-center gap-2 justify-between">
-            <h3 className="text-2xl font-bold shrink-0">Quản người dùng </h3>
-            <Link
-              href="/admin/users/create"
-              className={cn(buttonVariants({ variant: "default" }))}
-            >
-              <span className="hidden xs:inline">Tạo người dùng mới</span>
-              <PlusIcon className="w-4 h-4 shrink-0" />
-            </Link>
-          </div>
-
-          <UserTable />
-        </div>
-      </div>
+      <UserTable />
     </>
   );
 };

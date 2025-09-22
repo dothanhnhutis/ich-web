@@ -7,10 +7,13 @@ import {
   Command,
   Frame,
   GalleryVerticalEnd,
+  LayoutDashboardIcon,
   Map,
   PieChart,
   Settings2,
+  ShieldUserIcon,
   SquareTerminal,
+  WarehouseIcon,
 } from "lucide-react";
 
 import { NavMain } from "./nav-main";
@@ -169,7 +172,7 @@ export function AdminSidebar({
         </Link>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={[]} />
+        <NavMain />
         <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>

@@ -14,7 +14,6 @@ const AdminLayout = async ({
 }>) => {
   const user = await currentUser();
   if (!user) redirect("/login");
-
   return (
     <UserProvider user={user}>
       <ThemeProvider

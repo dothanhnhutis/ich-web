@@ -16,10 +16,19 @@ export default class UserAPI {
     });
     return res;
   }
+
   async logout() {
     await this.userInstance.delete("/logout", {
       headers: await getHeaders(),
     });
     (await cookies()).delete("sid");
+  }
+
+  // Admin
+  async queryUsers() {
+    const res = await this.userInstance.get<UserDetailAPIRes>("/", {
+      headers: await getHeaders(),
+    });
+    return res;
   }
 }
