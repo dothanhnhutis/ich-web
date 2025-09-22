@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 // import { ROUTES } from "./constants/routes";
 // import { getCurrentUserAction } from "./libs/actions/UserActions";
 import globalServices from "./services/global-services";
-import { FetchAPIError, FetchAPIResponse } from "./services/api";
+import { FetchAPI, FetchAPIError, FetchAPIResponse } from "./services/api";
 import { currentUser } from "./data/user";
 
 export async function middleware(request: NextRequest) {
