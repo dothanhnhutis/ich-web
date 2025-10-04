@@ -25,15 +25,24 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import Image from "next/image";
 import ToggleThemeIcon from "@/components/svg/toggle-theme";
 import { useTheme } from "next-themes";
 import { useUser } from "@/components/user-context";
+import React from "react";
+import { getShortName } from "@/lib/utils";
 
 export function NavUser() {
   const { isMobile } = useSidebar();
-  const { setTheme, theme } = useTheme();
+  const { setTheme } = useTheme();
   const { user } = useUser();
+
+  const avatar = React.useMemo(() => {
+    return user.avatar?.url || "/images/logo.png";
+  }, [user.avatar]);
+
+  const shortName = React.useMemo(() => {
+    return getShortName(user.username);
+  }, [user.username]);
 
   return (
     <SidebarMenu>
@@ -45,8 +54,10 @@ export function NavUser() {
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
               <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage src={user.avatar.url} alt={user.username} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                <AvatarImage src={avatar} alt={user.username} />
+                <AvatarFallback className="rounded-lg">
+                  {shortName}
+                </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-medium">{user.username}</span>
@@ -64,8 +75,10 @@ export function NavUser() {
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage src={user.avatar.url} alt={user.username} />
-                  <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                  <AvatarImage src={avatar} alt={user.username} />
+                  <AvatarFallback className="rounded-lg">
+                    {shortName}
+                  </AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">{user.username}</span>

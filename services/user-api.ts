@@ -13,6 +13,7 @@ export default class UserAPI {
   async currentUser() {
     const res = await this.userInstance.get<UserDetailAPIRes>("/me", {
       headers: await getHeaders(),
+      cache: "force-cache",
     });
     return res;
   }

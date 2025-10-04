@@ -25,7 +25,7 @@ const globalServices = new GlobalServices({
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
-    "Accept-Encoding": "gzip, deflate, br",
+    // "Accept-Encoding": "gzip, deflate, br",
   },
 });
 
